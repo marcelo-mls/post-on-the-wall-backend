@@ -7,6 +7,7 @@ const UserModel = model('user', new Schema({
 	initials: { type: String, required: true },
 	email: { type: String, required: true, unique: true },
 	password: { type: String, required: true },
+	encryptedPassword: { type: String, required: true },
 	createdAt: {
 		type: Date,
 		default: Date.now,
