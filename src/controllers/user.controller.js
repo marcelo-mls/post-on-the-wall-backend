@@ -1,4 +1,5 @@
 const UserModel = require('../models/user.model');
+const { createToken } = require('../utils/jwt.utils');
 const { createHash, isValidePassword } = require('../utils/md5.utils');
 
 async function getAllUsers(_req, res) {
@@ -18,22 +19,20 @@ async function getUserByEmail(req, res) {
 		return res.status(400).json({message: 'missing required fields'});
 	}
 
-	const result = await UserModel.findOne({'email': email }, { __v: 0, createdAt: 0 });
+	const result = await UserModel.findOne({'email': email }, { name: 1, _id: 1, encryptedPassword: 1 });
 
 	if (!result) {
 		return res.status(404).json({message: 'user not found'});
 	}
 
-	if (!isValidePassword(password, result.password)) {
-		console.log(!isValidePassword(password, result.password));
-		// return res.status(401).json({message: 'unauthorized'});
-	}
-
-	if (password !== result.password) {
+	if (!isValidePassword(password, result.encryptedPassword)) {
 		return res.status(401).json({message: 'unauthorized'});
 	}
 
-	res.status(200).json(result);
+	const {name, _id} = result;
+	const token = createToken({name, _id});
+
+	res.status(200).json({name, _id, token});
 }
 
 async function createUser(req, res) {

@@ -5,7 +5,7 @@ function createHash(reqPassword) {
 }
 
 function isValidePassword(reqPassword, storagePassword) {
-	return reqPassword === md5(storagePassword); 
+	return (md5(reqPassword) === storagePassword); 
 }
 
 module.exports = {
