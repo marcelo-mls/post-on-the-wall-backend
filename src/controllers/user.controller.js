@@ -43,12 +43,16 @@ async function createUser(req, res) {
 			return res.status(400).json({message: 'missing required fields'});
 		}
 
-		const hash = createHash(password);
+		const user = await UserModel.findOne({'email': email }, { _id: 1, email: 1 });
 
-		const result = await UserModel.create({name, initials, email, password, encryptedPassword: hash});
+		if (user) {
+			return res.status(409).json({message: `${user.email} already exists`});
+		} else {
+			const hash = createHash(password);
+			const result = await UserModel.create({name, initials, email, password, encryptedPassword: hash});
 
-		res.status(201).json(result);
-
+			res.status(201).json(result);
+		}
 	} catch (error) {
 		res.status(500).json({message: error.message });
 	}
