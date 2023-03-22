@@ -19,18 +19,16 @@ To write a post on the wall, the user needs to login.
   ### Built With
   </summary>
   
-  For the development of this API was chosen [`Node.js V16`](https://nodejs.org/en), [`Express`](https://expressjs.com/) and [`MongoDB v6`](https://www.mongodb.com/).
+  For the development of this API was chosen [`Node.js v16`](https://nodejs.org/en), [`Express`](https://expressjs.com/) and [`MongoDB v6`](https://www.mongodb.com/). Together, these technologies provide a powerful and flexible stack for building APIs in the backend of web applications. They allow you to write scalable, efficient, and easy-to-maintain code. Additionally, the fact that they are all written in JavaScript means that you can use the same language and tools for both the frontend and backend of your application, which can help streamline development and improve code consistency.
   
-  <!--
   <img height="60" align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg">
-  <p align="rigth">Node</p>
+  <p align="rigth">Node.js is a runtime environment for JavaScript that allows you to write server-side code in the same language as the client-side code. It's fast, efficient, and event-driven</p>
 
   <img height="60" align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg">
-  <p align="rigth">Express</p>
+  <p align="rigth">Express is a minimalist and flexible framework that is built on top of Node.js. It provides a robust set of features for web applications, including routing, middleware, and HTTP utility methods.</p>
 
   <img height="45" align="left" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
-  <p align="rigth">Mongo</p>
-  -->
+  <p align="rigth">MongoDB is a document-based NoSQL database that stores data in JSON-like documents. MongoDB is also highly scalable, and it allows you to handle large volumes of data and transactions easily.</p>
   
   
 </details>
@@ -39,8 +37,17 @@ To write a post on the wall, the user needs to login.
 
 These instructions will provide you a complete copy of the project up and running on your local machine for development purposes.
 
-:warning: It's necessary to have active `MongoDB` instance.
+:warning: You must have an active `MongoDB` (version 6) instance running on port `27017` on your local machine.
 
+<details>
+  
+  > If you use [`docker`](https://www.docker.com/) on your machine here is a command to quickly create a container with mongo v6
+  ```sh
+  docker run --name mongodb -p 27017:27017 -d mongo:6
+  ```
+</details>
+
+<br />
 
 1. Clone the repository:
 ```sh
@@ -58,7 +65,7 @@ npm install
 npm run dev
 ```
 
-4. (optional) To easily populate the collections with some dummy data, run:
+4. (optional) To quickly populate the collections with some dummy data, run:
 ```sh
 npm run db:seed
 ```
