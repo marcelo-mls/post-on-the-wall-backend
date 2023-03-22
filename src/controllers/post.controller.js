@@ -1,7 +1,8 @@
 const PostModel = require('../models/post.model');
 
 async function getPosts(_req, res) {
-	const result = await PostModel.find({}, { __v: 0 }).populate('user', { name: 1, initials: 1 });
+	const result = await PostModel
+		.find({}, { __v: 0 }).populate('user', { name: 1, initials: 1 }).sort({ createdAt: -1 });
 
 	if (!result) {
 		return res.status(404).json({message: 'data not found'});
