@@ -1,4 +1,4 @@
-# Post on the Wall - Backend
+# Post on the Wall - Backend (Node)
 > This is a backend part of a Full Stack application.
 
 Link to application frontend:
