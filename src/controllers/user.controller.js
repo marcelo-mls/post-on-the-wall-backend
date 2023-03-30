@@ -32,7 +32,7 @@ async function getUserByEmail(req, res) {
 	const {name, _id} = result;
 	const token = createToken({name, _id});
 
-	res.status(200).json({name, _id, token});
+	res.status(200).json({name, id: _id, token});
 }
 
 async function createUser(req, res) {

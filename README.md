@@ -76,6 +76,7 @@ cd post-on-the-wall-backend
 npm install
 npm run dev
 ```
+> backend will be running on port 8000.
 
 4. (optional) To quickly populate the collections with some dummy data, run:
 ```sh

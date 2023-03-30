@@ -8,7 +8,21 @@ async function getPosts(_req, res) {
 		return res.status(404).json({message: 'data not found'});
 	}
 
-	res.status(200).json(result);
+	const posts = result.map((post) => {
+		const {_doc } = post;
+		const {_id, user, ...rest} = _doc;
+
+		rest.id = _id;
+		rest.user = {
+			id: user._id,
+			name: user.name,
+			initials: user.initials
+		};
+		
+		return rest;
+	});
+
+	res.status(200).json(posts);
 }
 
 async function createPost(req, res) {

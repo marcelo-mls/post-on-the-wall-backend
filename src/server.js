@@ -3,5 +3,5 @@ const connectToMongo = require('./database/mongoConnection');
 
 connectToMongo();
 
-const PORT = 3001;
+const PORT = 8000;
 app.listen(PORT, () => console.info(`server running on port ${PORT}`));
